@@ -1,5 +1,5 @@
 from django.views.generic import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 class Index(View):
     template_name = 'index.html'
@@ -12,3 +12,15 @@ class TagStudy(View):
 
     def get(self, request):
         return render(request, self.template_name)
+    
+
+class Newcontent(View):
+    template_name = 'upload_form.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    def post(self, request):
+        param = request.POST.get('content', '')
+        print(f"param:{param}")
+        return redirect('edu:tag_study')
