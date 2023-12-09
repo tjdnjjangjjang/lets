@@ -1,6 +1,6 @@
 from django.views.generic import View
 from django.shortcuts import render, redirect
-
+from.models import feed
 class Index(View):
     template_name = 'index.html'
 
@@ -22,5 +22,8 @@ class Newcontent(View):
     
     def post(self, request):
         param = request.POST.get('content', '')
+        param2= request.FILES.get('up_photo', False)
         print(f"param:{param}")
+        f = feed(content = param, photo=param2)
+        f.save()
         return redirect('edu:tag_study')
