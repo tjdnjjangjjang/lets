@@ -15,6 +15,14 @@
         </strong>    
         축구선수<br/>
         <a href="{% url 'edu:new_content'%}">새글등록</a>
+        <ul>
+            {%for feed in feed_list %}
+                <li>
+                    {{feed.content}}
+                    <img src="/media/{{feed.photo}}" width="100px"/>
+                </li>
+            {% endfor %}
+        </ul>
     </p>   
 </div>
     <p>
@@ -44,8 +52,8 @@
        게시물<br/>
        팔로워<br/>
        팔로우<br/>
-       239<br/>
-       1302만<br/>
+       240<br/>
+       1305만<br/>
        229<br/>
      </p>  
 <div>

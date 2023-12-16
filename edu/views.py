@@ -11,7 +11,8 @@ class TagStudy(View):
     template_name = 'tag_study.html'
 
     def get(self, request):
-        return render(request, self.template_name)
+        f= feed.objects.all()
+        return render(request, self.template_name,{'feed_list': f})
     
 
 class Newcontent(View):
